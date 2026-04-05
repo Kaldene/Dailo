@@ -33,8 +33,25 @@ Dailo
                     </a>
                 </div>
             </div>
-            <div>
-
+            <div class="hero-info">
+                <div class=''>
+                    <div class="today-date-card">
+                        <h2>Сегодня, {{ current_date }}</h2>
+                        <p>
+                            Хорошего дня,
+                            {% if current_user.is_authenticated %}
+                            {{ current_user.username }}!
+                            {% else %}
+                            пользователь!
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="weather-card">
+                        <div class="weather-temperature">
+                            {{}}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
