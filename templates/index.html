@@ -8,19 +8,21 @@ Dailo
 <section class="hero">
     <div class="hero-container">
         <div class="hero-content">
-            <p class="hero-title">
-                Твой день. Твои цели. Твой прогресс.
-            </p>
+            <div class="hero-text">
+                <p class="hero-title">
+                    Твой день. Твои цели. Твой прогресс.
+                </p>
+            </div>
 
             <div class="hero-subtitle">
                 <p>Планируй день.</p>
-                <p>Развивай привычки.</p>
+                <p class="hero-subtitle-color">Развивай привычки.</p>
                 <p>Создавай себя.</p>
             </div>
 
             <p class="hero-description">
-                Dallo — это личный дашборд для задач и привычек с интеграцией
-                внешних сервисов. Всё, что нужно для продуктивности, в одном месте.
+                Dallo — это личный дашборд для задач и привычек с<br> интеграцией
+                внешних сервисов. Всё, что нужно для<br> продуктивности, в одном месте.
             </p>
 
             <div class="btn-hero">
@@ -32,10 +34,14 @@ Dailo
                 </a>
             </div>
         </div>
+
         <div class="hero-info">
-            <div class=''>
+            <div class='hero-card'>
                 <div class="today-date-card">
-                    <h2>Сегодня, {{ current_date }}</h2>
+                    <!-- Добавить когда пользователь вошел в аккаунт
+                     и базовую погоду
+                     -->
+                    <h2>Сегодня, {{ current_day }} <span class="accent-month">{{ current_month }}</span></h2>
                     <p>
                         Хорошего дня,
                         {% if current_user.is_authenticated %}
@@ -45,10 +51,17 @@ Dailo
                         {% endif %}
                     </p>
                 </div>
+
                 <div class="weather-card">
-                    <div class="weather-city">{{ current_weather_base.city }}</div>
-                    <div class="weather-temp">{{ current_weather_base.temperature }}°C</div>
-                    <div class="weather-condition">{{ current_weather_base.condition }}</div>
+                    <div class="today-weather">
+                        <div class="weather-city">{{ current_weather_base.city }}</div>
+                        <div class="weather-temp">{{ current_weather_base.temperature }}°C</div>
+                    </div>
+
+                    <div class="weather-status">
+                        <img src="{{ current_weather_base.icon }}" alt="{{ current_weather_base.condition }}">
+                        <div class="weather-condition">{{ current_weather_base.condition }}</div>
+                    </div>
                 </div>
             </div>
         </div>

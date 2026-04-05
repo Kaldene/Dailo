@@ -43,7 +43,8 @@ class WeatherService:
             return {
                 "temperature": data["current"]["temp_c"],
                 "condition": condition_ru,
-                "city": data["location"]["name"]
+                "city": data["location"]["name"],
+                 "icon": "https:" + data["current"]["condition"]["icon"]
             }
 
         except requests.exceptions.RequestException as err:

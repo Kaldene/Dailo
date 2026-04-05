@@ -27,8 +27,10 @@ def home():
     weather_service = WeatherService()
     current_weather_base = weather_service.weather_request_base("Москва")
 
-    current_date = f"{now.day} {months[now.month]}"
+    current_day = now.day
+    current_month = months[now.month]
 
     return render_template('index.html',
-                           current_date=current_date,
+                           current_day=current_day,
+                           current_month=current_month,
                            current_weather_base=current_weather_base)
