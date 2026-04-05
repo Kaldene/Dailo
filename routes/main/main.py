@@ -25,7 +25,7 @@ def home():
     }
 
     weather_service = WeatherService()
-    current_weather_base = weather_service.weather_request_base("Moscow")
+    current_weather_base = weather_service.weather_request_base("Москва")
 
     current_date = f"{now.day} {months[now.month]}"
 

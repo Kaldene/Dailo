@@ -6,57 +6,54 @@ Dailo
 
 {% block content %}
 <section class="hero">
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <p class="hero-title">
-                    Твой день. Твои цели. Твой прогресс.
-                </p>
+    <div class="hero-container">
+        <div class="hero-content">
+            <p class="hero-title">
+                Твой день. Твои цели. Твой прогресс.
+            </p>
 
-                <div class="hero-subtitle">
-                    <p>Планируй день.</p>
-                    <p>Развивай привычки.</p>
-                    <p>Создавай себя.</p>
-                </div>
-
-                <p class="hero-description">
-                    Dallo — это личный дашборд для задач и привычек с интеграцией
-                    внешних сервисов. Всё, что нужно для продуктивности, в одном месте.
-                </p>
-
-                <div class="btn-hero">
-                    <a href="#" class="btn btn-primary">Начать бесплатно</a>
-
-                    <a href="#about" class="btn btn-secondary">
-                        <img src="{{ url_for('static', filename='img/icon/ligh_hero.png') }}" alt="Иконка">
-                        <span>Узнать больше</span>
-                    </a>
-                </div>
+            <div class="hero-subtitle">
+                <p>Планируй день.</p>
+                <p>Развивай привычки.</p>
+                <p>Создавай себя.</p>
             </div>
-            <div class="hero-info">
-                <div class=''>
-                    <div class="today-date-card">
-                        <h2>Сегодня, {{ current_date }}</h2>
-                        <p>
-                            Хорошего дня,
-                            {% if current_user.is_authenticated %}
-                            {{ current_user.username }}!
-                            {% else %}
-                            пользователь!
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div class="weather-card">
-                        <div class="weather-temperature">
-                            {{}}
-                        </div>
-                    </div>
+
+            <p class="hero-description">
+                Dallo — это личный дашборд для задач и привычек с интеграцией
+                внешних сервисов. Всё, что нужно для продуктивности, в одном месте.
+            </p>
+
+            <div class="btn-hero">
+                <a href="#" class="btn btn-primary">Начать бесплатно</a>
+
+                <a href="#about" class="btn btn-secondary">
+                    <img src="{{ url_for('static', filename='img/icon/ligh_hero.png') }}" alt="Иконка">
+                    <span>Узнать больше</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-info">
+            <div class=''>
+                <div class="today-date-card">
+                    <h2>Сегодня, {{ current_date }}</h2>
+                    <p>
+                        Хорошего дня,
+                        {% if current_user.is_authenticated %}
+                        {{ current_user.username }}!
+                        {% else %}
+                        пользователь!
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="weather-card">
+                    <div class="weather-city">{{ current_weather_base.city }}</div>
+                    <div class="weather-temp">{{ current_weather_base.temperature }}°C</div>
+                    <div class="weather-condition">{{ current_weather_base.condition }}</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </section>
-
 {% endblock %}
 
 {% block scripts %}
