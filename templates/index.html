@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dailo
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-title">
+                    Твой день. Твои цели. Твой прогресс.
+                </p>
+
+                <div class="hero-subtitle">
+                    <p>Планируй день.</p>
+                    <p>Развивай привычки.</p>
+                    <p>Создавай себя.</p>
+                </div>
+
+                <p class="hero-description">
+                    Dallo — это личный дашборд для задач и привычек с интеграцией
+                    внешних сервисов. Всё, что нужно для продуктивности, в одном месте.
+                </p>
+
+                <div class="btn-hero">
+                    <a href="#" class="btn btn-primary">Начать бесплатно</a>
+
+                    <a href="#about" class="btn btn-secondary">
+                        <img src="{{ url_for('static', filename='img/icon/ligh_hero.png') }}" alt="Иконка">
+                        <span>Узнать больше</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}>
