@@ -4,6 +4,7 @@ from models import db, User
 from config import Config
 
 from routes.main.main import main_routes
+from routes.auth.auth import auth_routes
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -13,6 +14,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 app.register_blueprint(main_routes)
+app.register_blueprint(auth_routes)
 
 @login_manager.user_loader
 def load_user(user_id):

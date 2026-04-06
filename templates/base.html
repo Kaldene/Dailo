@@ -10,11 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+    <link rel="icon" href="{{ url_for('static', filename='img/icon/base_icon.png') }}">
 </head>
 <body>
 <header>
     <div class="container-header">
-        <a href="#"><h1>Dallo</h1></a>
+        <a href="{{url_for('main.home')}}"><h1>Dallo</h1></a>
     </div>
 
     <nav class="nav">
@@ -23,9 +24,9 @@
                 <li><a href="#">Дашборд</a></li>
                 <li><a href="#" class="logout">Выйти</a></li>
             {% else %}
-                <li><a href="#">Главная</a></li>
+                <li><a href="{{url_for('main.home')}}">Главная</a></li>
                 <li><a href="#">О проекте</a></li>
-                <li><a href="#" class="login">Войти</a></li>
+                <li><a href="{{url_for('auth.login')}}" class="login">Войти</a></li>
                 <li><a href="#" class="unlogin">Регистрация</a></li>
             {% endif %}
         </ul>
