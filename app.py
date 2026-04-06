@@ -1,10 +1,11 @@
 from flask import Flask,render_template
 from flask_login import LoginManager
-from models import db, User
+from models import db, User, Task
 from config import Config
 
 from routes.main.main import main_routes
 from routes.auth.auth import auth_routes
+from routes.task.task import task_routes
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -15,6 +16,7 @@ login_manager.init_app(app)
 
 app.register_blueprint(main_routes)
 app.register_blueprint(auth_routes)
+app.register_blueprint(task_routes)
 
 @login_manager.user_loader
 def load_user(user_id):
