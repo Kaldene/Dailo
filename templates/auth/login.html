@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Dailo | Login
+Dailo | Вход
 {% endblock %}
 
 {% block content %}
@@ -12,14 +12,21 @@ Dailo | Login
                 <h2>Вход</h2>
                 <p>Добро пожаловать обратно! Рады<br> видеть вас снова</p>
             </div>
+
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" class="form-control" placeholder="Email" required="required">
+                <div class="input-box">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="email" class="input-icon">
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Email" required="required">
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="password">Пароль</label>
-                <input id="password" name="password" type="password" class="form-control" placeholder="Password" required="required">
+                <div class="input-box">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/lock-2.png" alt="password" class="input-icon">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" required="required">
+                </div>
             </div>
 
             <div class="login-options">

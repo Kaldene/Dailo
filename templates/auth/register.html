@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dailo | Регистрация
+{% endblock %}
+
+
+{% block content %}
+<section class="section-register">
+    <div class="container-register">
+        <form method="POST" action="{{url_for('auth.register')}}" id="registerForm" class="register-card">
+            <div class="register-info">
+                <h2>Регистрация</h2>
+                <p>Создайте аккаунт, чтобы начать управлять<br> своими задачами</p>
+            </div>
+
+            <div class="register-form">
+                <label for="username">Имя</label>
+                <input type="text" id="username" name="username" placeholder="Введите ваше имя">
+            </div>
+
+            <div class="register-form">
+                <label for="email">Email</label>
+                <div class="input-box">
+                    <img src="https://img.icons8.com/?size=100&id=w5QHcTVpp1In&format=png&color=000000" class="input-icon">
+                    <input id="email" name="email" type="email" class="form-control"  placeholder="Введите ваш email" required="required">
+                </div>
+            </div>
+
+            <div class="register-form">
+                <label for="password">Пароль</label>
+                <div class="input-box">
+                    <img src="https://img.icons8.com/?size=100&id=KMH5Z5MJ0k30&format=png&color=000000" class="input-icon">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Введите пароль" required="required">
+                </div>
+            </div>
+
+            <div class="register-form">
+                <label>Подтвердите пароль</label>
+                <div class="input-box">
+                    <img src="https://img.icons8.com/?size=100&id=KMH5Z5MJ0k30&format=png&color=000000" class="input-icon">
+                    <input type="password" id="password2" name="password2" class="form-control" placeholder="Подтвердите пароль" required="required">
+                </div>
+            </div>
+
+            <div class="register-options">
+                <label class="remember-me">
+                    <input type="checkbox" name="remember">
+                    <span>
+                    Я согласен с
+                    <a href="#" class="terms-link">Условиями использования</a><br>
+                    и
+                    <a href="#" class="terms-link">Политикой конфиденциальности</a>
+                    </span>
+                </label>
+            </div>
+
+            <div class="register-btn">
+                <button type="submit" id="submitBtn">Зарегистрироваться</button>
+            </div>
+
+            <div class="login-divider">
+                <span>Или продолжите с</span>
+            </div>
+
+            <div class="social-login">
+                <a href="#" class="social-btn">
+                    <img src="{{ url_for('static', filename='img/icon/google-icon.png') }}" alt="Google">
+                    <span>Google</span>
+                </a>
+
+                <a href="#" class="social-btn">
+                    <img src="{{ url_for('static', filename='img/icon/github-icon.png') }}" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
+            </div>
+
+            <div class="login-button">
+                <p>Уже есть аккаунт? <a href="#">Войти</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
