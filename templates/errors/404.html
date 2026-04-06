@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+404 | Страница не найдена
+{% endblock %}
+
+{% block content %}
+<section class="error404-page">
+
+    <div class="error404-container">
+        <div class="error404-glow"></div>
+
+        <h1 class="error404-code">404</h1>
+        <h2 class="error404-title">Страница не найдена</h2>
+        <p class="error404-text">
+            Похоже, вы перешли по неправильному адресу.<br>
+            Такой страницы не существует или она была перемещена.
+        </p>
+
+        <a href="{{ url_for('main.home') }}" class="error404-btn">
+            Вернуться на главную
+        </a>
+
+        <div class="error404-illustration">
+            <img src="{{ url_for('static', filename='img/bg/404-astronaut.png') }}" alt="404 astronaut">
+        </div>
+    </div>
+</section>
+{% endblock %}

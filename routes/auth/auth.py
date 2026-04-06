@@ -24,7 +24,7 @@ def login():
             flash("Пользователь не найден", 'danger')
             return redirect(url_for('auth.login'))
 
-        if not check_password_hash(user.password, password):
+        if not check_password_hash(user.hashed_password, password):
             flash("Пароль неверный", 'danger')
             return redirect(url_for('auth.login'))
 

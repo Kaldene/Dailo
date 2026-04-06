@@ -32,6 +32,7 @@ Dailo | Регистрация
                 <div class="input-box">
                     <img src="https://img.icons8.com/?size=100&id=KMH5Z5MJ0k30&format=png&color=000000" class="input-icon">
                     <input id="password" name="password" type="password" class="form-control" placeholder="Введите пароль" required="required">
+                    <button type="button" class="toggle-password" data-target="password">👁</button>
                 </div>
             </div>
 
@@ -40,6 +41,7 @@ Dailo | Регистрация
                 <div class="input-box">
                     <img src="https://img.icons8.com/?size=100&id=KMH5Z5MJ0k30&format=png&color=000000" class="input-icon">
                     <input type="password" id="password2" name="password2" class="form-control" placeholder="Подтвердите пароль" required="required">
+                    <button type="button" class="toggle-password" data-target="password2">👁</button>
                 </div>
             </div>
 
@@ -54,6 +56,8 @@ Dailo | Регистрация
                     </span>
                 </label>
             </div>
+
+            <div id="errorMessage" class="error-message"></div>
 
             <div class="register-btn">
                 <button type="submit" id="submitBtn">Зарегистрироваться</button>
@@ -84,4 +88,5 @@ Dailo | Регистрация
 {% endblock %}
 
 {% block scripts %}
+<script src="{{url_for('static', filename='js/auth/register.js')}}"></script>
 {% endblock %}
