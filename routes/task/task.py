@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request,redirect,url_for
 from flask_login import login_required, current_user
-from models.user import db
+from models.user import db,User
 from models.task import Task
 
 task_routes = Blueprint('task', __name__)

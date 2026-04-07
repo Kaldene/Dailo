@@ -22,6 +22,22 @@ function validateRegisterForm(emailValue, passwordValue, passwordConfirmValue, u
         return "Пароль должен содержать не менее 8 символов";
     }
 
+    let hasLower = false;
+    let hasUpper = false;
+    let hasDigit = false;
+
+    for (let i =0; i < passwordValue.length; i++) {
+        const char = passwordValue[i]
+
+        if (/[a-z]/.test(char)) hasLower = true;
+        if (/[A-Z]/.test(char)) hasUpper = true;
+        if (/[0-9]/.test(char)) hasDigit = true;
+    }
+
+    if (!hasLower) return "Пароль должен содержать строчную букву";
+    if (!hasUpper) return "Пароль должен содержать заглавную букву";
+    if (!hasDigit) return "Пароль должен содержать цифру";
+
     return "";
 }
 
