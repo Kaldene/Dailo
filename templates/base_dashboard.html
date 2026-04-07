@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} {% endblock%}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" >
+    <link rel="icon" href="{{ url_for('static', filename='img/icon/base_icon.png') }}">
+</head>
+<body>
+<aside class="sidebar">
+    <div class="container-sidebar">
+        <div class="logo">
+            <h1>Dailo</h1>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <img src="https://img.icons8.com/?size=100&id=8xhovyHdOQzF&format=png&color=000000" alt="home">
+                        <span>Дашборд</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/?size=100&id=25ShWCn20u62&format=png&color=000000" alt="task">
+                        <span>Задачи</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/?size=100&id=cR42Mgi2Jndn&format=png&color=000000" alt="habits">
+                        <span>Привычки</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/?size=100&id=ZH1JWehKJFAC&format=png&color=000000" alt="calendar">
+                        <span>Календарь</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/?size=100&id=E1Si1cQP4u90&format=png&color=000000" alt="stats">
+                        <span>Статистика</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="bottom">
+            <a href="#" class="bottom-link">
+                <img src="https://img.icons8.com/?size=100&id=xyFoc6U1Hu3c&format=png&color=000000" alt="settings">
+                <span>Настройки</span>
+            </a>
+
+            <a href="{{ url_for('main.home') }}" class="bottom-link">
+                <img src="https://img.icons8.com/?size=100&id=5HW1YsFkzHio&format=png&color=000000" alt="logout">
+                <span>Выйти</span>
+            </a>
+        </div>
+    </div>
+</aside>
+{% block content %} {% endblock %}
+
+{% block script%} {% endblock %}
+</body>
+</html>
