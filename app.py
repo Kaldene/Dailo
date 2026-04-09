@@ -3,9 +3,11 @@ from flask_login import LoginManager
 from models import db, User, Task
 from config import Config
 
+#подключение к роутам
 from routes.main.main import main_routes
 from routes.auth.auth import auth_routes
 from routes.task.task import task_routes
+from routes.habit.habit import habit_routes
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -14,14 +16,18 @@ db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+#роуты
 app.register_blueprint(main_routes)
 app.register_blueprint(auth_routes)
 app.register_blueprint(task_routes)
+app.register_blueprint(habit_routes)
 
+#загрузка пользователя
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+#Страница 404
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('errors/404.html'), 404

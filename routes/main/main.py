@@ -30,7 +30,7 @@ def home():
     current_day = now.day
     current_month = months[now.month]
 
-    return render_template('index.html',
+    return render_template('main/index.html',
                            current_day=current_day,
                            current_month=current_month,
                            current_weather_base=current_weather_base)
