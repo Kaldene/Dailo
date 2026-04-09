@@ -5,7 +5,6 @@ from models.task import Task
 
 task_routes = Blueprint('task', __name__)
 
-#задачи, поменять в base.html с дашборда и сделать отдельную функцию отвечающий за это
 
 @task_routes.route('/task')
 @login_required

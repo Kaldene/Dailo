@@ -15,29 +15,32 @@ Dailo | Создание задач
 
         <form action="{{url_for('task.create_task')}}" method="post" class="create_task_form">
 
+            <!-- НАЗВАНИЕ -->
             <div class="ct-group">
                 <label for="title">Название задачи</label>
-                <input type="text" name="title" id="title" placeholder="Введите название задачи">
+                <input type="text" name="title" id="title" placeholder="Введите название задачи" required>
             </div>
 
+            <!-- ОПИСАНИЕ -->
             <div class="ct-group">
                 <label for="description">Описание <span class="optional">(необязательно)</span></label>
                 <textarea name="description" id="description" placeholder="Введите описание задачи..." rows="4"></textarea>
             </div>
 
+            <!-- ДАТА И ВРЕМЯ -->
             <div class="time-date">
                 <div class="date-group">
-                    <label for="date">Дата</label>
+                    <label for="due_date">Дата</label>
                     <div class="date-picker">
                         <img src="https://img.icons8.com/?size=100&id=ZH1JWehKJFAC&format=png&color=000000" alt="date-img">
-                        <input type="date" name="date" id="date">
+                        <input type="date" name="due_date" id="due_date">
                     </div>
                 </div>
                 <div class="time-group">
-                    <label for="time">Срок <span class="optional">(необязательно)</span></label>
+                    <label for="due_time">Срок <span class="optional">(необязательно)</span></label>
                     <div class="time-picker">
                         <img src="https://img.icons8.com/?size=100&id=4i5bTF9azXVR&format=png&color=000000" alt="time-img">
-                        <input type="time" id="time" name="time">
+                        <input type="time" id="due_time" name="due_time">
                     </div>
                 </div>
             </div>
