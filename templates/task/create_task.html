@@ -1,9 +1,94 @@
-{% extends "base.html" %}
+{% extends  "base_dashboard.html" %}
 
 {% block title %}
-404 | Список задач
+Dailo | Создание задач
 {% endblock %}
 
 {% block content %}
+<section class="create_task">
+    <div class="container-create_task">
+
+        <div class="ct-info">
+            <h1>Создание задачи</h1>
+            <p>Добавьте новую задачу, чтобы не забыть о важном</p>
+        </div>
+
+        <form action="{{url_for('task.create_task')}}" method="post" class="create_task_form">
+
+            <div class="ct-group">
+                <label for="title">Название задачи</label>
+                <input type="text" name="title" id="title" placeholder="Введите название задачи">
+            </div>
+
+            <div class="ct-group">
+                <label for="description">Описание <span class="optional">(необязательно)</span></label>
+                <textarea name="description" id="description" placeholder="Введите описание задачи..." rows="4"></textarea>
+            </div>
+
+            <div class="time-date">
+                <div class="date-group">
+                    <label for="date">Дата</label>
+                    <div class="date-picker">
+                        <img src="https://img.icons8.com/?size=100&id=ZH1JWehKJFAC&format=png&color=000000" alt="date-img">
+                        <input type="date" name="date" id="date">
+                    </div>
+                </div>
+                <div class="time-group">
+                    <label for="time">Срок <span class="optional">(необязательно)</span></label>
+                    <div class="time-picker">
+                        <img src="https://img.icons8.com/?size=100&id=4i5bTF9azXVR&format=png&color=000000" alt="time-img">
+                        <input type="time" id="time" name="time">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ПРИОРИТЕТ -->
+            <div class="ct-group">
+                <label>Приоритет</label>
+                <div class="priority-buttons">
+                    <input type="radio" name="priority" id="priority-low" value="low" checked>
+                    <label for="priority-low" class="priority-btn priority-low">
+                        <span class="priority-dot"></span>
+                        Низкий
+                    </label>
+
+                    <input type="radio" name="priority" id="priority-medium" value="medium">
+                    <label for="priority-medium" class="priority-btn priority-medium">
+                        <span class="priority-dot"></span>
+                        Средний
+                    </label>
+
+                    <input type="radio" name="priority" id="priority-high" value="high">
+                    <label for="priority-high" class="priority-btn priority-high">
+                        <span class="priority-dot"></span>
+                        Высокий
+                    </label>
+                </div>
+            </div>
+
+            <!-- КАТЕГОРИЯ -->
+            <div class="ct-group">
+                <label for="category">Категория <span>(необязательно)</span></label>
+                <select name="category" id="category" class="category-select">
+                    <option value="" disabled selected>Выберите категорию</option>
+                    <option value="work">Работа</option>
+                    <option value="personal">Личное</option>
+                    <option value="health">Здоровье</option>
+                    <option value="study">Учеба</option>
+                </select>
+            </div>
+
+            <!-- КНОПКИ -->
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="history.back()">Отмена</button>
+                <button type="submit" class="btn-create">
+                    <span>+</span>
+                    Создать задачу
+                </button>
+            </div>
+
+        </form>
+    </div>
+</section>
 
 {% endblock %}

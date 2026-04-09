@@ -50,3 +50,32 @@ class WeatherService:
         except requests.exceptions.RequestException as err:
             print("Request Error:", err)
             return None
+
+    def weather_request(self, lat, lon):
+
+        params = {
+            'key': self.api_key,
+            'q': f"{lat},{lon}",
+            'aqi': 'no'
+        }
+
+        try:
+            response = requests.get(self.base_url, params=params, timeout=10)
+            response.raise_for_status()
+
+            data = response.json()
+
+            condition_en = data["current"]["condition"]["text"]
+            condition_ru = condition_translations.get(condition_en, condition_en)
+
+            return {
+                "temperature": data["current"]["temp_c"],
+                "condition": condition_ru,
+                "city": data["location"]["name"],
+                "icon": "https:" + data["current"]["condition"]["icon"]
+
+            }
+
+        except requests.exceptions.RequestException as err:
+            print("Request Error:", err)
+            return None
