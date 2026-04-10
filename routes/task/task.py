@@ -1,8 +1,10 @@
+from idlelib.query import Query
+
 from flask import Blueprint,render_template,request,redirect,url_for,flash
 from flask_login import login_required, current_user
 from models.task import Task
 from models import db
-from datetime import datetime
+from datetime import datetime,date
 
 task_routes = Blueprint('task', __name__)
 
@@ -10,8 +12,44 @@ task_routes = Blueprint('task', __name__)
 @task_routes.route('/task')
 @login_required
 def task():
-    task = Task.query.filter_by(user_id=current_user.id).order_by(Task.created_at.desc()).all()
-    return render_template("task/task.html",task=task)
+
+    filter_type = request.args.get('filter', 'all')
+
+    # Создаем БАЗОВЫЙ запрос.
+    base_query = Task.query.filter_by(user_id=current_user.id)
+
+    # Применяем фильтры к черновику
+    if filter_type == 'active':
+        tasks = base_query.filter_by(completed=False).order_by(Task.created_at.desc()).all()
+
+    elif filter_type == 'completed':  # Добавил двоеточие!
+        tasks = base_query.filter_by(completed=True).order_by(Task.created_at.desc()).all()
+
+    elif filter_type == 'overdue':
+        tasks = base_query.filter(
+            Task.completed == False,
+            Task.due_date < date.today()
+        ).order_by(Task.due_date.asc()).all()
+
+    else:
+        tasks = base_query.order_by(Task.created_at.desc()).all()
+
+    # Считаем цифры для табов
+    counts = {
+        'all': base_query.count(),
+        'active': base_query.filter_by(completed=False).count(),
+        'completed': base_query.filter_by(completed=True).count(),
+        'overdue': base_query.filter(
+            Task.completed == False,
+            Task.due_date < date.today()
+        ).count()
+    }
+
+    #  Отдаем в шаблон
+    return render_template("task/task.html",
+                           current_filter=filter_type,
+                           counts=counts,
+                           task=tasks)
 
 @task_routes.route('/dashboard')
 @login_required

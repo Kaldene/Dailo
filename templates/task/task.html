@@ -5,5 +5,39 @@ Dailo | Список задач
 {% endblock %}
 
 {% block content %}
+<section class="page-header">
+    <div class="header-info">
+        <h1>Мои задачи</h1>
+        <p>Список всех ваших задач. Отслеживайте прогресс и ничего не забывайте.</p>
+    </div>
 
+    <div class="header-actions">
+        <a href="{{ url_for('task.create_task') }}" class="btn-top">
+            <img src="https://img.icons8.com/?size=100&id=OmXQBMMw2INX&format=png&color=000000" alt="+" class="btn-icon">
+            <span>Новая задача</span>
+        </a>
+    </div>
+</section>
+
+<div class="filter-tabs">
+    <a href="{{ url_for('task.task') }}" class="tab {% if current_filter == 'all' %}active{% endif %}">
+        <span>Все</span>
+        <span class="tab-count">{{ counts.all }}</span>
+    </a>
+
+    <a href="{{ url_for('task.task', filter='active') }}" class="tab {% if current_filter == 'active' %}active{% endif %}">
+        <span>В работе</span>
+        <span class="tab-count">{{ counts.active }}</span>
+    </a>
+
+    <a href="{{ url_for('task.task', filter='completed') }}" class="tab {% if current_filter == 'completed' %}active{% endif %}">
+        <span>Завершенные</span>
+        <span class="tab-count">{{ counts.completed }}</span>
+    </a>
+
+    <a href="{{ url_for('task.task', filter='overdue') }}" class="tab {% if current_filter == 'overdue' %}active{% endif %}">
+        <span>Просрочено</span>
+        <span class="tab-count">{{ counts.overdue }}</span>
+    </a>
+</div>
 {% endblock %}
